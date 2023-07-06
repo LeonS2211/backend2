@@ -5,6 +5,7 @@ import cors from 'cors'
 import docentesRoutes from './src/routes/docentes.js';
 import cursosRoutes from './src/routes/cursos.js';
 import universidadesRoutes from './src/routes/universidades.js';
+import rolesRoutes from './src/routes/roles.js'
 
 let app = express();
 app.use(bodyParser.json());
@@ -14,7 +15,8 @@ app.get('/', (req, res) => {
     return res.json({ result: 'OK'});
 })
 
-app.use("/universidades", universidadesRoutes);
+app.use("/universidad", universidadesRoutes);
+app.use("/rol", rolesRoutes);
 app.use("/docentes", docentesRoutes);
 app.use("/cursos", cursosRoutes);
 

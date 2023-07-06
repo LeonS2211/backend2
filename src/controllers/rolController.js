@@ -1,7 +1,7 @@
-import UniversidadesRepository from "../repository/universidadRepository.js";
+import rolRepository from "../repository/rolRepository.js";
 
 const findAll = (req, res) => {
-    const result = UniversidadesRepository.findAll();
+    const result = rolRepository.findAll();
 
     if (result)
         return res.status(200).json(result);
@@ -11,7 +11,7 @@ const findAll = (req, res) => {
 
 const findOne = (req, res) => {
     const id = req.params.id;
-    const result = UniversidadesRepository.findOne(id);
+    const result = rolRepository.findOne(id);
 
     if (result)
         return res.status(200).json(result);
@@ -19,6 +19,6 @@ const findOne = (req, res) => {
         return res.status(500).json({ message: 'Ha ocurrido un error'})
 }
 
-const UniversidadController = { findAll, findOne }
+const RolController = { findAll, findOne }
 
-export default UniversidadController;
+export default RolController;
