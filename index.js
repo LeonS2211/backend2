@@ -6,6 +6,7 @@ import docentesRoutes from './src/routes/docentes.js';
 import cursosRoutes from './src/routes/cursos.js';
 import universidadesRoutes from './src/routes/universidades.js';
 import rolesRoutes from './src/routes/roles.js'
+import carrerasRoutes from './src/routes/carreras.js'
 
 let app = express();
 app.use(bodyParser.json());
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 
 app.use("/universidad", universidadesRoutes);
 app.use("/rol", rolesRoutes);
+app.use("/carrera", carrerasRoutes);
 app.use("/docentes", docentesRoutes);
 app.use("/cursos", cursosRoutes);
 
