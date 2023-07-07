@@ -8,7 +8,7 @@ let citas = [
         enlaceSesion:"https://www.flaticon.es/icono-gratis/enlace_1063309", 
         estado:"pendiente", 
         idCurso: 1},
-    {   id: 1,
+    {   id: 2,
         idPersonaDocente: 2, 
         idPersonaAlumno: 5, 
         Fecha: "6/07/2023", 
