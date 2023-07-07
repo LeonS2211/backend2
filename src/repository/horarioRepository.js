@@ -3,7 +3,7 @@ let horarios = [
     {id: 2, idPersona: 2, horainicio: "10:00 am", diaDeLaSemana: "Lunes", horafin: "12:00 am"},
     {id: 3, idPersona: 2, horainicio: "10:00 am", diaDeLaSemana: "Jueves", horafin: "12:00 am"},
     {id: 4, idPersona: 3, horainicio: "11:00 am", diaDeLaSemana: "Lunes", horafin: "1:00 pm"},
-    {id: 5, idPersona: 3, horainicio: "7:00 pm", diaDeLaSemana: "Martes", horafin: "10:00 pm"},
+    {id: 5, idPersona: 3, horainicio: "7:00 pm", diaDeLaSemana: "Martes", horafin: "10:00 pm"}
 ];
 
 let counter = 5;

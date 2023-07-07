@@ -1,4 +1,4 @@
-import DocentesRepository from "../repository/docenteRepository.js";
+import DocentesRepository from "../repository/docenteERepository.js";
 
 const findAll = (req, res) => {
     const result = DocentesRepository.findAll();

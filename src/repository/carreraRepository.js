@@ -19,7 +19,7 @@ let carreras = [
     {id: 18, nombre: "Finanzas", idUniversidad: 6},
     {id: 19, nombre: "Obstetricia", idUniversidad: 7},
     {id: 20, nombre: "Gestion de Recursos Humanos", idUniversidad: 7},
-    {id: 21, nombre: "Ciencias Aeronauticas", idUniversidad: 7},
+    {id: 21, nombre: "Ciencias Aeronauticas", idUniversidad: 7}
 ];
 
 
