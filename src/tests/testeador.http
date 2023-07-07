@@ -1,45 +1,46 @@
-GET http://localhost:3001/cursos
+GET http://localhost:3001/persona
 ########
 
-POST http://localhost:3001/cursos/
+POST http://localhost:3001/persona/
 Content-Type: application/json
 
 {
-    "id": 4,
-    "nombre": "HCI",
-    "nivel": 5,
-    "carrera": "Sistemas",
-    "idDocente": 2
-  }
+        "id": 6,
+        "nombre": "Leon",
+        "apellido":"Salaz",
+        "tipoDocumento":"DNI",
+        "numeroDocumento":"76569006",
+        "idRol": 1,
+        "email": "Leo2",
+        "password": "broder2",
+        "idCarrera": 21,
+        "tituloPresentacion": "Esta es mi presentacion como alumno",
+        "presentacion": "Buenos dias, mi nombre es Leon Salaz"
+      }
 ###
 
-PUT http://localhost:3001/cursos/
-Content-Type: application/json
-
-  {
-    "id": 4,
-    "nombre": "Human-Computer Interaction",
-    "nivel": 5,
-    "carrera": "Sistemas",
-    "idDocente": 2
-  }
-
-###
-
-GET http://localhost:3001/cursos/2
-###
-
-DELETE http://localhost:3001/cursos/3
-
-########
-
-POST http://localhost:3001/cursos/
+PUT http://localhost:3001/persona/
 Content-Type: application/json
 
 {
-    "id": 7,
-    "nombre": "Gestion de Proyectos",
-    "nivel": 5,
-    "carrera": "Sistemas",
-    "idDocente": 2
-  }
+        "id": 6,
+        "nombre": "Leon",
+        "apellido":"Salaz",
+        "tipoDocumento":"DNI",
+        "numeroDocumento":"76569006",
+        "idRol": 1,
+        "email": "Leo2",
+        "password": "broder2",
+        "idCarrera": 21,
+        "tituloPresentacion": "Esta es mi presentacion como alumno",
+        "presentacion": "Buenos dias, mi nombre es Leon Salaz"
+      }
+
+###
+
+GET http://localhost:3001/persona/2
+###
+
+DELETE http://localhost:3001/cita/2
+
+########
