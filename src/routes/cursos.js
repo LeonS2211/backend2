@@ -1,14 +1,9 @@
 import express from 'express'
-import cursoController from '../controllers/cursoController.js';
-
-const { findAll, create, update, remove, findOne } = cursoController
+import CursoController from '../controllers/cursoController.js';
 
 const router = express.Router()
 
-router.get("/", findAll)
-router.post("/", create)
-router.put("/", update)
-router.delete("/:id", remove)
-router.get("/:id", findOne)
+router.get("/", CursoController.findAll)
+router.get("/:id", CursoController.findOne)
 
 export default router;
