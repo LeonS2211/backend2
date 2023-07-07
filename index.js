@@ -2,8 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors'
 
-import docentesERoutes from './src/routes/docentesE.js';
-import cursosERoutes from './src/routes/cursosE.js';
 
 import universidadesRoutes from './src/routes/universidades.js';
 import rolesRoutes from './src/routes/roles.js'
@@ -32,9 +30,6 @@ app.use("/curso", cursosRoutes);
 app.use("/personaCurso", personaCursosRoutes);
 app.use("/cita", citaRoutes);
 app.use("/calificacion", calificacionRoutes);
-
-app.use("/docentes", docentesERoutes);
-app.use("/cursos", cursosERoutes);
 
 app.listen(3001, () => {
     console.log('Servidor iniciado.');
