@@ -1,14 +1,14 @@
-import CursoRepository from "../repository/cursoRepository.js";
+import CarreraRepository from "../repository/carreraRepository.js";
 
 const findAll = (req, res) => {
-    const result = CursoRepository.findAll();
+    const result = CarreraRepository.findAll();
 
     return sendResponse(result, res);
 }
 
 const findOne = (req, res) => {
     const id = req.params.id;
-    const result = CursoRepository.findOne(id);
+    const result = CarreraRepository.findOne(id);
 
     return sendResponse(result, res);
 }
@@ -20,6 +20,6 @@ const sendResponse = (result, res) => {
         return res.status(500).json({ message: 'Ha ocurrido un error'})
 } 
 
-const CursoController = { findAll,  findOne}
+const CarreraController = { findAll,  findOne}
 
-export default CursoController;
+export default CarreraController;
