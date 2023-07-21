@@ -1,52 +1,63 @@
-let citas = [
-    {   id: 1,
-        idPersonaDocente: 2, 
-        idPersonaAlumno: 1, 
-        Fecha: "6/07/2023", 
-        horainicio: "10:00 am", 
-        horafin:"10:30 am", 
-        enlaceSesion:"https://www.flaticon.es/icono-gratis/enlace_1063309", 
-        estado:"pendiente", 
-        idCurso: 1},
-    {   id: 2,
-        idPersonaDocente: 2, 
-        idPersonaAlumno: 5, 
-        Fecha: "6/07/2023", 
-        horainicio: "10:30 am", 
-        horafin:"11:00 am", 
-        enlaceSesion:"https://www.flaticon.es/icono-gratis/enlace_1063309", 
-        estado:"pendiente", 
-        idCurso: 1},
-];
+import Cita from '../models/cita.js'
+import Curso from '../models/curso.js'
 
-let counter = 2;
+const findAll = async () => {
+    try {
+        const result = await Cita.findAll({include: Curso});
+        console.log(result)
+        return result;
 
-const findAll = () => {
-    return citas;
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
 }
 
-const create = (Cita) => {
-    counter++;
-    const newCita = {...Cita, id: counter}
-    citas.push(newCita);
-    return Cita;
+const create = async (cita) => {
+    try {
+
+        const newCita = await Cita.create(cita);
+
+        return newCita;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
 }
 
-const findOne = (id) => {
-    const result = citas.find(x => x.id == id);
-    return result;
+const findOne = async (id) => {
+    try {
+        return await Cita.findOne({
+            where: {
+                id
+            }
+        })
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
 }
 
 
-const remove = (id) => {
-    const index = citas.findIndex(item => item.id == id)
-    
-    if (index > -1) {
-        citas.splice(index, 1)
+const remove = async (id) => {
+    try {
+        await Cita.destroy({
+            where: {
+                id
+            }
+        })
+
         return true;
-    } else
-    return false;
-        
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
+
 }
 
 

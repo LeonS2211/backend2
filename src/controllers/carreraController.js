@@ -1,14 +1,21 @@
 import CarreraRepository from "../repository/carreraRepository.js";
 
-const findAll = (req, res) => {
-    const result = CarreraRepository.findAll();
+const findAll = async (req, res) => {
+    const result = await CarreraRepository.findAll();
 
     return sendResponse(result, res);
 }
 
-const findOne = (req, res) => {
+const findOne = async (req, res) => {
     const id = req.params.id;
-    const result = CarreraRepository.findOne(id);
+    const result = await CarreraRepository.findOne(id);
+
+    return sendResponse(result, res);
+}
+
+const create = async (req, res) => {
+
+    result = await CarreraRepository.create(req.body);
 
     return sendResponse(result, res);
 }
@@ -20,6 +27,6 @@ const sendResponse = (result, res) => {
         return res.status(500).json({ message: 'Ha ocurrido un error'})
 } 
 
-const CarreraController = { findAll,  findOne}
+const CarreraController = { findAll,  findOne, create}
 
 export default CarreraController;
