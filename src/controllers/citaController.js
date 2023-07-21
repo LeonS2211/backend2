@@ -37,6 +37,12 @@ const remove = async (req, res) => {
     return sendResponse(result, res);
 }
 
+const update = async (req,res) => {
+    const result = await CitasRepository.update(req.body)
+
+    return sendResponse(result, res);
+}
+
 const sendResponse = (result, res) => {
     if (result)
         return res.status(200).json(result);
@@ -44,6 +50,6 @@ const sendResponse = (result, res) => {
         return res.status(500).json({ message: 'Ha ocurrido un error'})
 } 
 
-const CitaController = { findAll, create, findOne, remove }
+const CitaController = { findAll, create, findOne, remove, update }
 
 export default CitaController;

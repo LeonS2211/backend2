@@ -15,7 +15,7 @@ const findOne = async (req, res) => {
 
 const create = async (req, res) => {
 
-    result = await CalificacionRepository.create(req.body);
+    const result = await CalificacionRepository.create(req.body);
 
     return sendResponse(result, res);
 }
@@ -29,6 +29,12 @@ const remove = async (req, res) => {
     return sendResponse(result, res);
 }
 
+const update = async (req,res) => {
+    const result = await CalificacionRepository.update(req.body)
+
+    return sendResponse(result, res);
+}
+
 const sendResponse = (result, res) => {
     if (result)
         return res.status(200).json(result);
@@ -36,6 +42,6 @@ const sendResponse = (result, res) => {
         return res.status(500).json({ message: 'Ha ocurrido un error'})
 } 
 
-const CalificacionController = { findAll, create, findOne, remove }
+const CalificacionController = { findAll, create, findOne, remove, update }
 
 export default CalificacionController;

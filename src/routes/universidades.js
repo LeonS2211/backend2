@@ -7,5 +7,6 @@ router.get("/", UniversidadController.findAll)
 router.get("/:id", UniversidadController.findOne)
 router.post("/", UniversidadController.create)
 router.delete("/:id", UniversidadController.remove)
+router.put("/", UniversidadController.update)
 
 export default router;
