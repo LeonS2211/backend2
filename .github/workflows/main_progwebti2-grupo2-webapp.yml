@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'ProgWebTI2-grupo2-webapp'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9FD2A93E49A54685B67D73A1112A960E }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6B3348F2E5A94A92B37E981152470D04 }}
           package: .
