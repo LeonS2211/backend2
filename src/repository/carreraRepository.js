@@ -60,6 +60,27 @@ const remove = async (id) => {
 
 }
 
-const CarrerasRepository = { findAll, findOne, create, remove};
+const update = async (carrera) => {
+    try {
+        const foundCarrera =  await Carrera.findOne({
+            where: {
+                id: carrera.id
+            }
+        })
+  
+        foundCarrera.set(carrera)
+  
+        foundCarrera.save()
+  
+        return foundCarrera;
+  
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+  }
+
+const CarrerasRepository = { findAll, findOne, create, remove, update};
 
 export default CarrerasRepository; 

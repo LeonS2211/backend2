@@ -60,6 +60,27 @@ const remove = async (id) => {
 
 }
 
-const universidadesRepository = { findAll, findOne, create, remove};
+const update = async (universidad) => {
+    try {
+        const foundUniversidad =  await Universidad.findOne({
+            where: {
+                id: universidad.id
+            }
+        })
+  
+        foundUniversidad.set(universidad)
+  
+        foundUniversidad.save()
+  
+        return foundUniversidad;
+  
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+  }
+
+const universidadesRepository = { findAll, findOne, create, remove, update};
 
 export default universidadesRepository; 

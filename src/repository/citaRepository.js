@@ -60,7 +60,27 @@ const remove = async (id) => {
 
 }
 
+const update = async (cita) => {
+    try {
+        const foundCita =  await Cita.findOne({
+            where: {
+                id: cita.id
+            }
+        })
+  
+        foundCita.set(cita)
+  
+        foundCita.save()
+  
+        return foundCita;
+  
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+  }
 
-const CitasRepository = { findAll, create, findOne, remove };
+const CitasRepository = { findAll, create, findOne, remove, update };
 
 export default CitasRepository; 

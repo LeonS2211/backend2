@@ -59,6 +59,27 @@ const remove = async (id) => {
 
 }
 
-const calificacionesRepository = { findAll, create, findOne, remove};
+const update = async (calificacion) => {
+    try {
+        const foundCalificacion =  await Calificacion.findOne({
+            where: {
+                id: calificacion.id
+            }
+        })
+  
+        foundCalificacion.set(calificacion)
+  
+        foundCalificacion.save()
+  
+        return foundCalificacion;
+  
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+  }
+
+const calificacionesRepository = { findAll, create, findOne, remove, update};
 
 export default calificacionesRepository; 

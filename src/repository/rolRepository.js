@@ -60,6 +60,27 @@ const remove = async (id) => {
 
 }
 
-const rolesRepository = { findAll, findOne, create, remove};
+const update = async (rol) => {
+    try {
+        const foundRol =  await Rol.findOne({
+            where: {
+                id: rol.id
+            }
+        })
+  
+        foundRol.set(rol)
+  
+        foundRol.save()
+  
+        return foundRol;
+  
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+  }
+
+const rolesRepository = { findAll, findOne, create, remove, update};
 
 export default rolesRepository; 

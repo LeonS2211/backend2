@@ -60,6 +60,27 @@ const remove = async (id) => {
 
 }
 
-const CursosRepository = { findAll, findOne, create, remove};
+const update = async (curso) => {
+    try {
+        const foundCurso =  await Curso.findOne({
+            where: {
+                id: curso.id
+            }
+        })
+  
+        foundCurso.set(curso)
+  
+        foundCurso.save()
+  
+        return foundCurso;
+  
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+  }
+
+const CursosRepository = { findAll, findOne, create, remove, update};
 
 export default CursosRepository; 
