@@ -1,40 +1,63 @@
-let personaCursos = [
-    {id: 1, idPersona: 1, idCurso: 1},
-    {id: 2, idPersona: 2, idCurso: 1},
-    {id: 3, idPersona: 2, idCurso: 2},
-    {id: 4, idPersona: 2, idCurso: 6},
-    {id: 5, idPersona: 2, idCurso: 7},
-    {id: 6, idPersona: 5, idCurso: 1},
-];
+import PersonaCurso from '../models/personaCurso.js'
+import Persona from '../models/persona.js'
 
-let counter = 6
+const findAll = async () => {
+    try {
+        const result = await PersonaCurso.findAll({include: Persona});
+        console.log(result)
+        return result;
 
-const findAll = () => {
-    return personaCursos;
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
 }
 
-const create = (personaCurso) => {
-    counter++;
-    const newCurso = {...personaCurso, id: counter}
-    personaCursos.push(newCurso);
-    return personaCurso;
+const create = async (personaCurso) => {
+    try {
+
+        const newPersonaCurso = await PersonaCurso.create(personaCurso);
+
+        return newPersonaCurso;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
 }
 
-const findOne = (id) => {
-    const result = personaCursos.find(x => x.id == id);
-    return result;
+const findOne = async (id) => {
+    try {
+        return await PersonaCurso.findOne({
+            where: {
+                id
+            }
+        })
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
 }
 
 
-const remove = (id) => {
-    const index = personaCursos.findIndex(item => item.id == id)
-    
-    if (index > -1) {
-        personaCursos.splice(index, 1)
+const remove = async (id) => {
+    try {
+        await PersonaCurso.destroy({
+            where: {
+                id
+            }
+        })
+
         return true;
-    } else
-    return false;
-        
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
+
 }
 
 
