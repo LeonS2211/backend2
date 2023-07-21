@@ -1,8 +1,9 @@
 import Rol from '../models/rol.js'
+import Persona from '../models/persona.js'
 
 const findAll = async () => {
     try {
-        const result = await Rol.findAll();
+        const result = await Rol.findAll({include: Persona});
         console.log(result)
         return result;
 
@@ -28,8 +29,22 @@ const findOne = async (id) => {
     }
 }
 
+const create = async (rol) => {
+    try {
+
+        const newRol = await Rol.create(rol);
+
+        return newRol;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
+}
 
 
-const rolesRepository = { findAll, findOne};
+
+const rolesRepository = { findAll, findOne, create};
 
 export default rolesRepository; 

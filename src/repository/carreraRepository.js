@@ -1,9 +1,9 @@
 import Carrera from '../models/carrera.js'
-
+import Universidad from '../models/universidad.js'
 
 const findAll = async () => {
     try {
-        const result = await Carrera.findAll();
+        const result = await Carrera.findAll({include: Universidad});
         console.log(result)
         return result;
 
@@ -29,7 +29,21 @@ const findOne = async (id) => {
     }
 }
 
+const create = async (carrera) => {
+    try {
 
-const CarrerasRepository = { findAll, findOne};
+        const newCarrera = await Carrera.create(carrera);
+
+        return newCarrera;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
+}
+
+
+const CarrerasRepository = { findAll, findOne, create};
 
 export default CarrerasRepository; 
