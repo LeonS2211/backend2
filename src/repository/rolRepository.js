@@ -43,8 +43,23 @@ const create = async (rol) => {
     }
 }
 
+const remove = async (id) => {
+    try {
+        await Rol.destroy({
+            where: {
+                id
+            }
+        })
 
+        return true;
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
 
-const rolesRepository = { findAll, findOne, create};
+}
+
+const rolesRepository = { findAll, findOne, create, remove};
 
 export default rolesRepository; 

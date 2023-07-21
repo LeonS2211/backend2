@@ -63,7 +63,24 @@ const update = async (persona) => {
   }
 }
 
+const remove = async (id) => {
+  try {
+      await Persona.destroy({
+          where: {
+              id
+          }
+      })
 
-const personasRepository = { findAll, create, findOne,update };
+      return true;
+  }
+  catch(err) {
+      console.error(err)
+      return null;
+  }        
+
+}
+
+
+const personasRepository = { findAll, create, findOne,update, remove };
 
 export default personasRepository; 

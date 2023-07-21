@@ -29,6 +29,15 @@ const create = async (req, res) => {
         return res.status(500).json({ message: 'Ha ocurrido un error'})
 }
 
-const RolController = { findAll, findOne, create }
+const remove = async (req, res) => {
+
+    const id = req.params.id;
+
+    const result = await rolRepository.remove(id)
+
+    return sendResponse(result, res);
+}
+
+const RolController = { findAll, findOne, create, remove }
 
 export default RolController;

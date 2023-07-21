@@ -29,6 +29,15 @@ const create = async (req, res) => {
         return res.status(500).json({ message: 'Ha ocurrido un error'})
 }
 
-const UniversidadController = { findAll, findOne, create }
+const remove = async (req, res) => {
+
+    const id = req.params.id;
+
+    const result = await UniversidadesRepository.remove(id)
+
+    return sendResponse(result, res);
+}
+
+const UniversidadController = { findAll, findOne, create, remove }
 
 export default UniversidadController;

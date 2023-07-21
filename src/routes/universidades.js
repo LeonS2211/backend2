@@ -6,5 +6,6 @@ const router = express.Router()
 router.get("/", UniversidadController.findAll)
 router.get("/:id", UniversidadController.findOne)
 router.post("/", UniversidadController.create)
+router.delete("/:id", UniversidadController.remove)
 
 export default router;

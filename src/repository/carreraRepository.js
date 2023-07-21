@@ -43,7 +43,23 @@ const create = async (carrera) => {
     }
 }
 
+const remove = async (id) => {
+    try {
+        await Carrera.destroy({
+            where: {
+                id
+            }
+        })
 
-const CarrerasRepository = { findAll, findOne, create};
+        return true;
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
+
+}
+
+const CarrerasRepository = { findAll, findOne, create, remove};
 
 export default CarrerasRepository; 
