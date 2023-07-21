@@ -1,21 +1,21 @@
 import CalificacionRepository from "../repository/calificacionRepository.js";
 
-const findAll = (req, res) => {
-    const result = CalificacionRepository.findAll();
+const findAll = async (req, res) => {
+    const result = await CalificacionRepository.findAll();
 
     return sendResponse(result, res);
 }
 
-const findOne = (req, res) => {
+const findOne = async (req, res) => {
     const id = req.params.id;
-    const result = CalificacionRepository.findOne(id);
+    const result = await CalificacionRepository.findOne(id);
 
     return sendResponse(result, res);
 }
 
-const create = (req, res) => {
+const create = async (req, res) => {
 
-    result = CalificacionRepository.create(req.body);
+    result = await CalificacionRepository.create(req.body);
 
     return sendResponse(result, res);
 }

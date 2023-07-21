@@ -1,38 +1,38 @@
 import CitasRepository from "../repository/citaRepository.js";
 import CursosRepository from "../repository/cursoRepository.js";
 
-const findAll = (req, res) => {
-    const result = CitasRepository.findAll();
+const findAll = async (req, res) => {
+    const result = await CitasRepository.findAll();
 
     return sendResponse(result, res);
 }
 
-const findOne = (req, res) => {
+const findOne = async (req, res) => {
     const id = req.params.id;
-    const result = CitasRepository.findOne(id);
+    const result = await CitasRepository.findOne(id);
 
     return sendResponse(result, res);
 }
 
-const create = (req, res) => {
+const create = async (req, res) => {
 
     const idCurso = req.body.idCurso;
 
-    const curso = CursosRepository.findOne(idCurso) ?? null;
+    const curso = await CursosRepository.findOne(idCurso) ?? null;
 
     let result = null;
 
     if (curso)
-        result = CitasRepository.create(req.body);
+        result = await CitasRepository.create(req.body);
 
     return sendResponse(result, res);
 }
 
-const remove = (req, res) => {
+const remove = async (req, res) => {
 
     const id = req.params.id;
 
-    const result = CitasRepository.remove(id)
+    const result = await CitasRepository.remove(id)
 
     return sendResponse(result, res);
 }

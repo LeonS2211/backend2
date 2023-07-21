@@ -1,14 +1,14 @@
 import CarreraRepository from "../repository/carreraRepository.js";
 
-const findAll = (req, res) => {
-    const result = CarreraRepository.findAll();
+const findAll = async (req, res) => {
+    const result = await CarreraRepository.findAll();
 
     return sendResponse(result, res);
 }
 
-const findOne = (req, res) => {
+const findOne = async (req, res) => {
     const id = req.params.id;
-    const result = CarreraRepository.findOne(id);
+    const result = await CarreraRepository.findOne(id);
 
     return sendResponse(result, res);
 }

@@ -1,17 +1,31 @@
-let roles = [
-    {id: 1, descripcion: "Alumno"},
-    {id: 2, descripcion: "Profesor"}
-];
+import Rol from '../models/rol.js'
 
+const findAll = async () => {
+    try {
+        const result = await Rol.findAll();
+        console.log(result)
+        return result;
 
-const findAll = () => {
-    return roles;
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
 }
 
 
-const findOne = (id) => {
-    const result = roles.find(x => x.id == id);
-    return result;
+const findOne = async (id) => {
+    try {
+        return await Rol.findOne({
+            where: {
+                id
+            }
+        })
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
 }
 
 
