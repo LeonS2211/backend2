@@ -2,37 +2,37 @@ import RolesRepository from "../repository/rolRepository.js";
 import CarrerasRepository from "../repository/carreraRepository.js";
 import PersonasRepository from "../repository/personaRepository.js";
 
-const findAll = (req, res) => {
-    const result = PersonasRepository.findAll();
+const findAll = async (req, res) => {
+    const result = await PersonasRepository.findAll();
 
     return sendResponse(result, res);
 }
 
-const findOne = (req, res) => {
+const findOne = async (req, res) => {
     const id = req.params.id;
-    const result = PersonasRepository.findOne(id);
+    const result = await PersonasRepository.findOne(id);
 
     return sendResponse(result, res);
 }
 
-const create = (req, res) => {
+const create = async (req, res) => {
 
     const idRol = req.body.idRol;
     const idCarrera = req.body.idCarrera;
 
-    const rol = RolesRepository.findOne(idRol) ?? null;
-    const carrera = CarrerasRepository.findOne(idCarrera) ?? null;
+    const rol = await RolesRepository.findOne(idRol) ?? null;
+    const carrera = await CarrerasRepository.findOne(idCarrera) ?? null;
 
     let result = null;
 
     if (rol && carrera)
-        result = PersonasRepository.create(req.body);
+        result = await PersonasRepository.create(req.body);
 
     return sendResponse(result, res);
 }
 
-const update = (req,res) => {
-    const result = PersonasRepository.update(req.body)
+const update = async (req,res) => {
+    const result = await PersonasRepository.update(req.body)
 
     return sendResponse(result, res);
 }

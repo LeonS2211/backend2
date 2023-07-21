@@ -1,26 +1,48 @@
-let universidades = [
-    {id: 1, descripcion: "Universidad de Lima"},
-    {id: 2, descripcion: "Universidad Nacional Mayor de San Marcos"},
-    {id: 3, descripcion: "Universidad Peruana Cayetano Heredia"},
-    {id: 4, descripcion: "Pontificia Universidad Catolica del Peru"},
-    {id: 5, descripcion: "Universidad Nacional de Ingenieria"},
-    {id: 6, descripcion: "Universidad del Pacifico"},
-    {id: 7, descripcion: "Universidad de San Martin de Porres"}
-];
+import Universidad from '../models/universidad.js'
+import Carrera from '../models/carrera.js'
 
+const findAll = async () => {
+    try {
+        const result = await Universidad.findAll({include: Carrera});
+        console.log(result)
+        return result;
 
-const findAll = () => {
-    return universidades;
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
 }
 
 
-const findOne = (id) => {
-    const result = universidades.find(x => x.id == id);
-    return result;
+const findOne = async (id) => {
+    try {
+        return await Universidad.findOne({
+            where: {
+                id
+            }
+        })
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
 }
 
+const create = async (universidad) => {
+    try {
 
+        const newUniversidad = await Universidad.create(universidad);
 
-const universidadesRepository = { findAll, findOne};
+        return newUniversidad;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
+}
+
+const universidadesRepository = { findAll, findOne, create};
 
 export default universidadesRepository; 
