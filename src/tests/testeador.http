@@ -1,22 +1,10 @@
-GET http://localhost:3001/persona
+GET http://localhost:3001
 ########
 
-POST http://localhost:3001/persona/
+POST http://localhost:3001/universidad/
 Content-Type: application/json
 
-{
-        "id": 6,
-        "nombre": "Leon",
-        "apellido":"Salaz",
-        "tipoDocumento":"DNI",
-        "numeroDocumento":"76569006",
-        "idRol": 1,
-        "email": "Leo2",
-        "password": "broder2",
-        "idCarrera": 21,
-        "tituloPresentacion": "Esta es mi presentacion como alumno",
-        "presentacion": "Buenos dias, mi nombre es Leon Salaz"
-      }
+    { "descripcion": "Universidad de San Martin de Porres"}
 ###
 
 PUT http://localhost:3001/persona/

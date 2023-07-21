@@ -1,38 +1,62 @@
-let horarios = [
-    {id: 1, idPersona: 2, horainicio: "10:00 am", diaDeLaSemana: "Lunes", horafin: "12:00 am"},
-    {id: 2, idPersona: 2, horainicio: "10:00 am", diaDeLaSemana: "Lunes", horafin: "12:00 am"},
-    {id: 3, idPersona: 2, horainicio: "10:00 am", diaDeLaSemana: "Jueves", horafin: "12:00 am"},
-    {id: 4, idPersona: 3, horainicio: "11:00 am", diaDeLaSemana: "Lunes", horafin: "1:00 pm"},
-    {id: 5, idPersona: 3, horainicio: "7:00 pm", diaDeLaSemana: "Martes", horafin: "10:00 pm"}
-];
+import Horario from '../models/horario.js'
+import Persona from '../models/persona.js'
 
-let counter = 5;
+const findAll = async () => {
+    try {
+        const result = await Horario.findAll({include: Persona});
+        console.log(result)
+        return result;
 
-const findAll = () => {
-    return horarios;
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
 }
 
-const create = (Horario) => {
-    counter++;
-    const newHorario = {...Horario, id: counter}
-    horarios.push(newHorario);
-    return Horario;
+const create = async (horario) => {
+    try {
+
+        const newHorario = await Horario.create(horario);
+
+        return newHorario;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
 }
 
-const findOne = (id) => {
-    const result = horarios.find(x => x.id == id);
-    return result;
+const findOne = async (id) => {
+    try {
+        return await Horario.findOne({
+            where: {
+                id
+            }
+        })
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
 }
 
-const remove = (id) => {
-    const index = horarios.findIndex(item => item.id == id)
-    
-    if (index > -1) {
-        horarios.splice(index, 1)
+const remove = async (id) => {
+    try {
+        await Horario.destroy({
+            where: {
+                id
+            }
+        })
+
         return true;
-    } else
-    return false;
-        
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
+
 }
 
 
