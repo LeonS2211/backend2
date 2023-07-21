@@ -1,24 +1,45 @@
-let calificaciones = [
-    {id: 1, idCita: 1, calificacion: 4.0, comentario: "Buen profe, me ayudo en todo lo que queria"},
-    {id: 2, idCita: 2, calificacion: 4.5, comentario: "Excelente profe"},
-];
+import Calificacion from '../models/calificacion.js'
+import Cita from '../models/cita.js'
 
-let counter = 2;
+const findAll = async () => {
+    try {
+        const result = await Calificacion.findAll({include: Cita});
+        console.log(result)
+        return result;
 
-const findAll = () => {
-    return calificaciones;
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
 }
 
-const create = (Calificacion) => {
-    counter++;
-    const newCalificacion = {...Calificacion, id: counter}
-    calificaciones.push(newCalificacion);
-    return Calificacion;
+const create = async (calificacion) => {
+    try {
+
+        const newCalificacion = await Calificacion.create(calificacion);
+
+        return newCalificacion;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
 }
 
-const findOne = (id) => {
-    const result = calificaciones.find(x => x.id == id);
-    return result;
+const findOne = async (id) => {
+    try {
+        return await Calificacion.findOne({
+            where: {
+                id
+            }
+        })
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
 }
 
 

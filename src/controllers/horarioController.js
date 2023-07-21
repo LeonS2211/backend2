@@ -1,31 +1,31 @@
 import HorariosRepository from "../repository/horarioRepository.js";
 
-const findAll = (req, res) => {
-    const result = HorariosRepository.findAll();
+const findAll = async (req, res) => {
+    const result = await HorariosRepository.findAll();
 
     return sendResponse(result, res);
 }
 
-const findOne = (req, res) => {
+const findOne = async (req, res) => {
     const id = req.params.id;
-    const result = HorariosRepository.findOne(id);
+    const result = await HorariosRepository.findOne(id);
 
     return sendResponse(result, res);
 }
 
-const create = (req, res) => {
+const create = async (req, res) => {
 
-    result = HorariosRepository.create(req.body);
+    result = await HorariosRepository.create(req.body);
 
     return sendResponse(result, res);
 }
 
 
-const remove = (req, res) => {
+const remove = async (req, res) => {
 
     const id = req.params.id;
 
-    const result = HorariosRepository.remove(id)
+    const result = await HorariosRepository.remove(id)
 
     return sendResponse(result, res);
 }

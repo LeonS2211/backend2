@@ -1,21 +1,50 @@
-let roles = [
-    {id: 1, descripcion: "Alumno"},
-    {id: 2, descripcion: "Profesor"}
-];
+import Rol from '../models/rol.js'
+import Persona from '../models/persona.js'
 
+const findAll = async () => {
+    try {
+        const result = await Rol.findAll({include: Persona});
+        console.log(result)
+        return result;
 
-const findAll = () => {
-    return roles;
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
 }
 
 
-const findOne = (id) => {
-    const result = roles.find(x => x.id == id);
-    return result;
+const findOne = async (id) => {
+    try {
+        return await Rol.findOne({
+            where: {
+                id
+            }
+        })
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }
+}
+
+const create = async (rol) => {
+    try {
+
+        const newRol = await Rol.create(rol);
+
+        return newRol;
+
+    } catch(err) {
+        console.error(err)
+
+        return null;
+    }
 }
 
 
 
-const rolesRepository = { findAll, findOne};
+const rolesRepository = { findAll, findOne, create};
 
 export default rolesRepository; 
