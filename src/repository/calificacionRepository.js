@@ -42,7 +42,23 @@ const findOne = async (id) => {
     }
 }
 
+const remove = async (id) => {
+    try {
+        await Calificacion.destroy({
+            where: {
+                id
+            }
+        })
 
-const calificacionesRepository = { findAll, create, findOne};
+        return true;
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
+
+}
+
+const calificacionesRepository = { findAll, create, findOne, remove};
 
 export default calificacionesRepository; 

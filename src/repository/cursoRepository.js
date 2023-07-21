@@ -43,7 +43,23 @@ const create = async (curso) => {
     }
 }
 
+const remove = async (id) => {
+    try {
+        await Curso.destroy({
+            where: {
+                id
+            }
+        })
 
-const CursosRepository = { findAll, findOne, create};
+        return true;
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
+
+}
+
+const CursosRepository = { findAll, findOne, create, remove};
 
 export default CursosRepository; 

@@ -43,6 +43,23 @@ const create = async (universidad) => {
     }
 }
 
-const universidadesRepository = { findAll, findOne, create};
+const remove = async (id) => {
+    try {
+        await Universidad.destroy({
+            where: {
+                id
+            }
+        })
+
+        return true;
+    }
+    catch(err) {
+        console.error(err)
+        return null;
+    }        
+
+}
+
+const universidadesRepository = { findAll, findOne, create, remove};
 
 export default universidadesRepository; 
