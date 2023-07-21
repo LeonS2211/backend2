@@ -1,8 +1,9 @@
 import Horario from '../models/horario.js'
+import Persona from '../models/persona.js'
 
 const findAll = async () => {
     try {
-        const result = await Horario.findAll();
+        const result = await Horario.findAll({include: Persona});
         console.log(result)
         return result;
 

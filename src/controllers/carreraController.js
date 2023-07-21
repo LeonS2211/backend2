@@ -13,6 +13,13 @@ const findOne = async (req, res) => {
     return sendResponse(result, res);
 }
 
+const create = async (req, res) => {
+
+    result = await CarreraRepository.create(req.body);
+
+    return sendResponse(result, res);
+}
+
 const sendResponse = (result, res) => {
     if (result)
         return res.status(200).json(result);
@@ -20,6 +27,6 @@ const sendResponse = (result, res) => {
         return res.status(500).json({ message: 'Ha ocurrido un error'})
 } 
 
-const CarreraController = { findAll,  findOne}
+const CarreraController = { findAll,  findOne, create}
 
 export default CarreraController;

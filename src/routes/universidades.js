@@ -5,5 +5,6 @@ const router = express.Router()
 
 router.get("/", UniversidadController.findAll)
 router.get("/:id", UniversidadController.findOne)
+router.post("/", UniversidadController.create)
 
 export default router;

@@ -1,8 +1,9 @@
 import Persona from '../models/persona.js'
+import Rol from '../models/rol.js'
 
 const findAll = async () => {
   try {
-      const result = await Persona.findAll();
+      const result = await Persona.findAll({include: Rol});
       console.log(result)
       return result;
 

@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const hostname = process.env.HOSTNAME || '127.0.0.1'
+const hostname = process.env.HOSTNAME || 'prograweb-ti2.postgres.database.azure.com'
 const username = process.env.BDUSER || 'postgres'
 const password = process.env.PASSWORD || 'password123.'
 const database = process.env.DATABASE || 'midb'

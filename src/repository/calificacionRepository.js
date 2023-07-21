@@ -1,9 +1,9 @@
 import Calificacion from '../models/calificacion.js'
-
+import Cita from '../models/cita.js'
 
 const findAll = async () => {
     try {
-        const result = await Calificacion.findAll();
+        const result = await Calificacion.findAll({include: Cita});
         console.log(result)
         return result;
 

@@ -1,8 +1,9 @@
 import PersonaCurso from '../models/personaCurso.js'
+import Persona from '../models/persona.js'
 
 const findAll = async () => {
     try {
-        const result = await PersonaCurso.findAll();
+        const result = await PersonaCurso.findAll({include: Persona});
         console.log(result)
         return result;
 

@@ -1,8 +1,9 @@
 import Cita from '../models/cita.js'
+import Curso from '../models/curso.js'
 
 const findAll = async () => {
     try {
-        const result = await Cita.findAll();
+        const result = await Cita.findAll({include: Curso});
         console.log(result)
         return result;
 
